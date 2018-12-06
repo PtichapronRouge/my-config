@@ -1,0 +1,76 @@
+runtime! config/**/*.vim
+
+" Vundle initialization
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Add plugins here ****************
+Plugin 'VundleVim/Vundle.vim' " Vundle - Required
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+
+Plugin 'vim-scripts/YankRing.vim'
+" *********************************
+call vundle#end()
+
+filetype plugin indent on
+
+" Set leader key
+let mapleader = ","
+let g:mapleader = ","
+
+" Quick ESC
+inoremap jk <esc>
+
+" Tabulation
+set expandtab
+set smarttab
+
+set shiftwidth=4
+set tabstop=4
+
+" Indentation
+set autoindent 
+set smartindent
+set wrap
+
+" Visual interface
+syntax on
+set number
+set encoding=utf8
+
+" End-of-line spaces
+hi ExtraWhiteSpace ctermbg=red guibg=red
+autocmd Syntax * syn match ExtraWhiteSpace /\s\%#\@<!$/
+
+" Splits moving
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+map <C-h> <C-W>h
+
+" Smart tabs
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+nmap <F2> gT
+nmap <F3> gt
+
+" Persistent undo
+set undodir=~/.vim/temp_dirs/undodir
+set undofile
+
+" Status line
+
+set laststatus=2
+set statusline=\ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+" Nerdtree
+map <leader>nn :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\.o$']
+
