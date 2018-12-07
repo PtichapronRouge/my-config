@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Vimrc initialization
-ln -s ~/my-config/vim/vimrc ~/.vimrc
+ln -f -s ~/my-config/vim ~/.vim
+ln -f -s ~/.vim/vimrc ~/.vimrc
 
 # Vundle download
-git clone https://github.com/VundleVim/Vundle.vim.git ~/my-config/vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Vundle launch
 vim +PluginInstall +qall
