@@ -5,16 +5,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Add plugins here ****************
+" Vundle
 Plugin 'VundleVim/Vundle.vim' " Vundle - Required
 
+" Core
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'plasticboy/vim-markdown'
-
 Plugin 'ctrlpvim/ctrlp.vim'
-
 Plugin 'vim-scripts/YankRing.vim'
+Plugin 'Konfekt/FastFold'
+
+" Python
+Plugin 'Yggdroot/indentline'
+Plugin 'tmhedberg/SimpylFold'
+
+" C++
 " *********************************
 call vundle#end()
 
@@ -72,5 +78,6 @@ set statusline=\ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " Nerdtree
 map <leader>nn :NERDTreeToggle<cr>
+map <F1> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.o$']
 
