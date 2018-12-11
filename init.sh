@@ -17,4 +17,6 @@ fi
 echo "Done"
 
 # Vundle launch
+echo "Installing vim plugins..."
 vim +PluginInstall +qall
+echo "Done"
