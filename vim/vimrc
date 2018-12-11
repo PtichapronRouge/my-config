@@ -81,3 +81,5 @@ map <leader>nn :NERDTreeToggle<cr>
 map <F1> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.o$']
 
+" Yankring 
+let g:yankring_history_dir = expand('$HOME/.vim/buffers')

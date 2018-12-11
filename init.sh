@@ -4,6 +4,7 @@
 ln -f -s ~/my-config/vim ~/.vim
 ln -f -s ~/.vim/vimrc ~/.vimrc
 
+
 # Vundle download
 VUNDLE_PATH=~/.vim/bundle/Vundle.vim
 
@@ -16,7 +17,11 @@ else
 fi
 echo "Done"
 
+# Required to prevent yankring from writing in $HOME
+mkdir -p ~/.vim/buffers
+
 # Vundle launch
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
 echo "Done"
+
