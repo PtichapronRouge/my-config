@@ -22,6 +22,9 @@ Plugin 'tmhedberg/SimpylFold'
 
 " Mutlilanguage autocompletion
 Plugin 'Valloric/YouCompleteMe'
+
+" Git
+Plugin 'tpope/vim-fugitive'
 " *********************************
 call vundle#end()
 
