@@ -20,6 +20,9 @@ Plugin 'Konfekt/FastFold'
 Plugin 'Yggdroot/indentline'
 Plugin 'tmhedberg/SimpylFold'
 
+" LaTeX
+Plugin 'lervag/vimtex'
+
 " Mutlilanguage autocompletion
 Plugin 'Valloric/YouCompleteMe'
 
