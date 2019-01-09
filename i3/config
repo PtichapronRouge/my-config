@@ -37,13 +37,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+w exec i3lock -feb -c 444444
 exec xautolock -notify -time 15 -locker 'i3lock -feb -c 444444' &
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -183,13 +176,68 @@ bar {
         status_command i3status
 }
 
+###### EXEC ON STARTUP ###################################################
+
+
 exec --no-startup-id clipit
+exec --no-startup-id nm-applet
+
+
+##### AUDIO CONTROL ######################################################
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
+# For keyboards without Audio keys
+# Press $mod+Shift+a to enter alsamixer mode
+mode "$mode_alsa" {
+    bindsym m exec "amixer sset Master mute"
+    bindsym u exec "amixer sset Master unmute"
+    bindsym Up exec "amixer sset Master 5%+"
+    bindsym Down exec "amixer sset Master 5%-"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $mode_alsa Alsamixer Mode: [m]ute [u]nmute [Up] [Down]
+bindsym $mod+Shift+a mode "$mode_alsa"
+
+
+##### SCREEN CONTROL ######################################################
+
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+
+##### PROGRAMS LAUNCHERS ##################################################
+
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+
+# Press $mod+o to enter launch mode
+mode "$mode_launcher" {
+
+    bindsym f exec "firefox"
+    bindsym t exec "thunderbird"
+    bindsym e exec "telegram-desktop"
+    bindsym r exec "riot-desktop"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram
+bindsym $mod+o mode "mode_launcher"
+
