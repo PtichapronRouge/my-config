@@ -90,3 +90,7 @@ let NERDTreeIgnore=['\.o$']
 
 " Yankring 
 let g:yankring_history_dir = expand('$HOME/.vim/buffers')
+
+" YouCompleteMe
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/config/ycm_extra_conf.py'
