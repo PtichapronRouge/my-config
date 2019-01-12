@@ -87,6 +87,7 @@ set statusline=\ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 map <leader>nn :NERDTreeToggle<cr>
 map <F1> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.o$']
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Yankring 
 let g:yankring_history_dir = expand('$HOME/.vim/buffers')
