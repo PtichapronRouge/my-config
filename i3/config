@@ -240,5 +240,5 @@ mode "$mode_launcher" {
 }
 
 set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram
-bindsym $mod+o mode "mode_launcher"
+bindsym $mod+o mode "$mode_launcher"
 
