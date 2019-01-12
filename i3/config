@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $sup Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -74,7 +75,7 @@ bindsym $mod+Control+l move workspace to output up
 bindsym $mod+Control+k move workspace to output down
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -101,16 +102,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "Principal"
-set $ws2 "Navigateur"
-set $ws3 "Console"
-set $ws4 "Chat"
-set $ws5 "Mail"
-set $ws6 "Musique"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "Monitoring"
+set $ws1 "1-Principal"
+set $ws2 "2-Navigateur"
+set $ws3 "3-Console"
+set $ws4 "4-Chat"
+set $ws5 "5-Mail"
+set $ws6 "6-Auxiliaire-1"
+set $ws7 "7-Auxiliaire-2"
+set $ws8 "8-Auxiliaire-3"
+set $ws9 "9-Auxiliaire-4"
+set $ws10 "10-Musique"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -118,11 +119,11 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $sup+1 workspace $ws6
+bindsym $sup+2 workspace $ws7
+bindsym $sup+3 workspace $ws8
+bindsym $sup+4 workspace $ws9
+bindsym $sup+5 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -130,11 +131,11 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $sup+Shift+1 move container to workspace $ws6
+bindsym $sup+Shift+2 move container to workspace $ws7
+bindsym $sup+Shift+3 move container to workspace $ws8
+bindsym $sup+Shift+4 move container to workspace $ws9
+bindsym $sup+Shift+5 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
