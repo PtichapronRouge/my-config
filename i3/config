@@ -143,6 +143,7 @@ bindsym $sup+Shift+5 move container to workspace $ws10
 
 assign [class="Telegram"]   "4: Chat"
 assign [class="Riot"]       "4: Chat"
+assign [class="Slack"]      "4: Chat"
 
 assign [class="Thunderbird"] "5: Mail"
 
@@ -245,11 +246,12 @@ mode "$mode_launcher" {
     bindsym t exec "thunderbird"
     bindsym e exec "telegram-desktop"
     bindsym r exec "riot-desktop"
+    bindsym s exec "slack"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
-set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram
+set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram [s]lack
 bindsym $mod+o mode "$mode_launcher"
 
