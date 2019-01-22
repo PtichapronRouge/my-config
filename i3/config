@@ -101,6 +101,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# screenshot
+bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y_%m_%d_%H_%M_%S.png
 
 ##### WORKSPACES ### ##################################################
 
@@ -115,7 +117,9 @@ set $ws6 "6: Auxiliaire-1"
 set $ws7 "7: Auxiliaire-2"
 set $ws8 "8: Auxiliaire-3"
 set $ws9 "9: Auxiliaire-4"
-set $ws10 "10: Musique"
+set $ws10 "10: Auxiliaire-5"
+set $ws11 "11: Monitoring"
+set $ws12 "12: Musique"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -128,6 +132,8 @@ bindsym $sup+2 workspace $ws7
 bindsym $sup+3 workspace $ws8
 bindsym $sup+4 workspace $ws9
 bindsym $sup+5 workspace $ws10
+bindsym $sup+twosuperior workspace $ws11
+bindsym $mod+twosuperior workspace $ws12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -140,11 +146,13 @@ bindsym $sup+Shift+2 move container to workspace $ws7
 bindsym $sup+Shift+3 move container to workspace $ws8
 bindsym $sup+Shift+4 move container to workspace $ws9
 bindsym $sup+Shift+5 move container to workspace $ws10
+bindsym $sup+Shift+twosuperior move container to workspace $ws11
+bindsym $mod+Shift+twosuperior move container to workspace $ws12
 
-assign [class="Telegram"]   "4: Chat"
-assign [class="Riot"]       "4: Chat"
-
-assign [class="Thunderbird"] "5: Mail"
+assign [class="Telegram"]   $ws4
+assign [class="Riot"]       $ws4
+assign [class="Thunderbird"] $ws5
+assign [class="Spotify"] $ws12
 
 ###########################################################################
 
@@ -245,11 +253,13 @@ mode "$mode_launcher" {
     bindsym t exec "thunderbird"
     bindsym e exec "telegram-desktop"
     bindsym r exec "riot-desktop"
+    bindsym g exec "google-chrome"
+    bindsym s exec "spotify"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
-set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram
+set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram [g]oogle-chrome [s]potify
 bindsym $mod+o mode "$mode_launcher"
 
