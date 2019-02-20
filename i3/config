@@ -31,7 +31,8 @@ font pango:monospace 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec gnome-terminal
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -200,7 +201,7 @@ bar {
 ###### EXEC ON STARTUP ###################################################
 
 
-exec --no-startup-id clipit
+#exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 
 ##### AUDIO CONTROL ######################################################
@@ -263,3 +264,13 @@ mode "$mode_launcher" {
 set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram [g]oogle-chrome [s]potify
 bindsym $mod+o mode "$mode_launcher"
 
+font pango:Noto Mono for Powerline 8
+exec_always --no-startup-id i3-msg 'exec compton'
+
+
+# i3-gaps feature
+gaps inner 10
+gaps outer 0
+smart_gaps on
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
