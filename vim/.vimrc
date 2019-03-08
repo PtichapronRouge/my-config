@@ -181,8 +181,9 @@ Plugin 'scrooloose/nerdtree'
 " super awesome fuzzy finder for all the things (Replaced ctrl P)
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
+" you will need to install the_silver_searcher
 
-" File Actions
+"File Actions
 Plugin 'tpope/vim-eunuch'                         " Vim wrapper for most common UNIX shell commands
 
 " Text Formatting
@@ -290,7 +291,7 @@ let NERDTreeShowHidden=1                      " Show hidden files
 map <Leader>f :NERDTreeToggle<CR>
 
 " ============= AutoComplete & Snippets Config ===========
-let g:ycm_path_to_python_interpreter = '/Users/adamlove/anaconda3/bin/python3'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 if has('python3')
   " make YCM compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
