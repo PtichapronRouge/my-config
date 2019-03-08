@@ -33,6 +33,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
+# Unbinding Cap Lock and bind it to Esc
+exec setxkbmap -option caps:swapescape
+
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -75,6 +79,9 @@ bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+j move workspace to output down
 bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+l move workspace to output right
+
+# move to last workspace
+bindsym $mod+Tab workspace back_and_forth
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -135,6 +142,8 @@ bindsym $sup+4 workspace $ws9
 bindsym $sup+5 workspace $ws10
 bindsym $sup+twosuperior workspace $ws11
 bindsym $mod+twosuperior workspace $ws12
+bindsym $sup+grave workspace $ws11
+bindsym $mod+grave workspace $ws12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -148,13 +157,15 @@ bindsym $sup+Shift+3 move container to workspace $ws8
 bindsym $sup+Shift+4 move container to workspace $ws9
 bindsym $sup+Shift+5 move container to workspace $ws10
 bindsym $sup+Shift+twosuperior move container to workspace $ws11
+bindsym $sup+Shift+grave move container to workspace $ws11
 bindsym $mod+Shift+twosuperior move container to workspace $ws12
+bindsym $mod+Shift+grave move container to workspace $ws12
 
 assign [class="Telegram"]   $ws4
 assign [class="Riot"]       $ws4
 assign [class="Thunderbird"] $ws5
 assign [class="Spotify"] $ws12
-assign [class="Code"] $ws6
+#assign [class="Code"] $ws6
 assign [class="Google"] $ws2
 #assign [class="Gnome"] $ws3
 
