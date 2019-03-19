@@ -164,10 +164,14 @@ bindsym $mod+Shift+grave move container to workspace $ws12
 assign [class="Telegram"]   $ws4
 assign [class="Riot"]       $ws4
 assign [class="Thunderbird"] $ws5
-assign [class="Spotify"] $ws12
-#assign [class="Code"] $ws6
-assign [class="Google"] $ws2
-#assign [class="Gnome"] $ws3
+for_window [class="Spotify"] move to workspace $ws12
+assign [class="^Code$"] $ws1
+assign [class="^Google$"] $ws2
+for_window [title="^Vim$"] move to workspace $ws1
+for_window [title="^Gtop$"] move to workspace $ws11
+for_window [title="^YouTube Music$"] move to workspace $ws12
+for_window [title="^WhatsApp$"] move to workspace $ws4
+
 
 ###########################################################################
 
@@ -219,9 +223,10 @@ bar {
 
 
 #exec --no-startup-id clipit
-exec --no-startup-id nm-applet
-exec --no-startup-id compton
-exec --no-startup-id source ~/.fehbg
+exec --no-startup-id nm-applet                #Network Manager Widget
+exec --no-startup-id compton                  #Transparency for terminal
+exec --no-startup-id source ~/.fehbg          #Set Background
+exec --no-startup-id xset r rate 250 18       #Key Pressed Rate (initial delay in ms, nb of repeat per sec)
 
 ##### AUDIO CONTROL ######################################################
 
@@ -291,3 +296,4 @@ gaps outer 0
 smart_gaps on
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
+

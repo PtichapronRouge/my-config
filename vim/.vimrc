@@ -30,7 +30,13 @@ set hidden
 " engine - tell it to use the old one
 set re=1
 
-" ==================== Swap Files ====================
+" ==================== Extension Color ===============
+
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile *.grammar set filetype=javascript
+
+"==================== Swap Files ====================
 
 set noswapfile
 set nobackup
@@ -183,7 +189,10 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
 " you will need to install the_silver_searcher
 
-"File Actions
+" Preview
+Plugin 'skywind3000/vim-preview'
+
+" File Actions
 Plugin 'tpope/vim-eunuch'                         " Vim wrapper for most common UNIX shell commands
 
 " Text Formatting
@@ -251,7 +260,11 @@ Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to t
 Plugin 'tpope/vim-rails'                            " Better Rails Syntax
 Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
 
+" Very good Smooth-Scrolling
+Plugin 'terryma/vim-smooth-scroll'
+
 call vundle#end()
+
 
 " ====================== Theme Config ==================
 
@@ -418,3 +431,8 @@ function! s:MkNonExDir(file, buf)
     endif
   endif
 endfunction
+
+noremap K :call smooth_scroll#up(3, 6, 1)<CR>
+noremap J :call smooth_scroll#down(3, 6, 1)<CR>
+
+let g:airline#extensions#tabline#show_tabs = 0
