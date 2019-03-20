@@ -1,13 +1,14 @@
 export TERM="xterm-256color"
+
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
 # export LC_ALL=""
- 
+
 # If you come from bash you might have to change your $PATH.
   export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Added Path
-  export PATH=$HOME/Scripts:$PATH
+  export PATH=$HOME/Scripts:$HOME/snap:$PATH
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/manu/.oh-my-zsh"
@@ -118,3 +119,15 @@ POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
 POWERLEVEL9K_ANACONDA_BACKGROUND='teal'
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_VIRTUALENV_BACKGROUND='teal'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bash/powerline.sh
+fi
