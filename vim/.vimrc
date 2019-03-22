@@ -52,10 +52,6 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" ======================= Folds =======================
-
-"set nofoldenable                            " Disable folding
-
 " ==================== Moving Lines ====================
 nmap - :m -2<CR>
 nmap = :m +1<CR>
@@ -169,7 +165,7 @@ autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 
 " ====================== iTerm Settings ==================
 
-set mouse=a                                   " Mouse scrolling in iTerm
+set mouse=a                                   " Mouse scrolling
 set ttymouse=xterm2                           " Mouse setting for tmux
 set ttymouse=sgr
 
@@ -243,12 +239,6 @@ Plugin 'mxw/vim-jsx'                              " Better JSX syntax
 Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
 Plugin 'jelera/vim-javascript-syntax'
 
-" TypeScript
-Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
-"Plugin 'HerringtonDarkholme/yats'
-
-"Plugin 'othree/yajs.vim'                         " Yet another js syntax
-
 " JSX / React
 Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
 
@@ -262,6 +252,9 @@ Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
 
 " Very good Smooth-Scrolling
 Plugin 'terryma/vim-smooth-scroll'
+
+" Folds
+Plugin 'konfekt/fastfold'
 
 call vundle#end()
 
@@ -395,6 +388,15 @@ nmap <leader>d <Plug>(ale_fix)
 "let g:ale_sign_column_always = 1
 "let g:ale_lint_on_save = 1
 
+
+" ======================= Folds =======================
+
+let g:fastfold_fold_command_suffixes = []
+let g:javaScript_fold = 1
+let g:sh_fold_enabled= 7
+let g:markdown_folding = 1
+let g:tex_fold_enabled = 1
+
 " ====================== Prettier Config ==================
 
 "let g:prettier#exec_cmd_async = 1
@@ -421,7 +423,6 @@ set linespace=2
 set statusline=%=&P\ %f\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 set noshowmode
-
 " ==================== Custom Functions =================
 function! s:MkNonExDir(file, buf)
   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
@@ -436,3 +437,7 @@ noremap K :call smooth_scroll#up(3, 6, 1)<CR>
 noremap J :call smooth_scroll#down(3, 6, 1)<CR>
 
 let g:airline#extensions#tabline#show_tabs = 0
+
+" ======================= Debug ====================
+
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
