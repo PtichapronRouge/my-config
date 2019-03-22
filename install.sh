@@ -5,10 +5,10 @@ dir="~/my-config"
 
 #################### Adding directories ####################
 
-mkdir ~/.config
-mkdir ~/.config/i3
-mkdir ~/.config/i3blocks
-mkdir ~/"$old_dir"
+mkdir -p ~/.config
+mkdir -p ~/.config/i3
+mkdir -p ~/.config/i3blocks
+mkdir -p "$old_dir"
 
 #################### Moving Old Files ######################
 
@@ -26,3 +26,5 @@ ln -rs "$dir"/i3/config ~/.config/i3/config
 ln -rs "$dir"/compton/compton.conf ~/.config/compton.conf
 ln -rs "$dir"/i3blocks/config ~/.config/i3blocks/config
 ln -rs "$dir"/zsh/zshrc ~/.zshrc
+ln -rs "$dir"/Scripts ~/bin
+
