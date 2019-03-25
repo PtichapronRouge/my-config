@@ -109,6 +109,7 @@ nmap <leader>h :bp<CR>
 
 " Close current buffer but keep split (from vimBufkill)
 nmap <leader>w :BD<CR>
+nmap <leader>W :BD!<CR>
 
 " Close all buffers
 nmap <leader>q :bufdo bdelete<CR>
