@@ -144,8 +144,12 @@ zle -N down-line-or-beginning-search
 [[ -n "$key[Left]"   ]] && bindkey -- "$key[Left]" backward-word
 [[ -n "$key[Right]" ]] && bindkey -- "$key[Right]" forward-word
 
-
 bindkey "^K" up-line-or-history
 bindkey "^J" down-line-or-history
 bindkey "^H" backward-char
 bindkey "^L" forward-char
+
+################### FZF #####################################
+#
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--layout=reverse --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500' --bind ctrl-h:preview-up,ctrl-l:preview-down"
