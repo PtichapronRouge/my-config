@@ -19,3 +19,9 @@ Package needed :
 Package needed :
 	powerline-fonts-git
   powerline
+
+# vim
+    Vundle
+    fzf
+    fd
+    bat
