@@ -47,7 +47,7 @@ xnoremap jk <Esc>
 cnoremap jk <C-c>
 
 " Movement in insert mode
-inoremap <C-h> <C-o>h
+imap <C-h> <C-o>h
 inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
@@ -273,6 +273,7 @@ Plugin 'terryma/vim-smooth-scroll'
 
 " Folds
 Plugin 'konfekt/fastfold'
+Plugin 'jeetsukumaran/vim-buffergator'
 
 call vundle#end()
 
@@ -281,13 +282,17 @@ call vundle#end()
 
 syntax enable
 "set termguicolors
-set term=xterm-256color
-set background=dark
-
+"set term=xterm-256color
+set termguicolors
+colorscheme material-monokai
+let g:airline_theme='materialmonokai'
+let g:materialmonokai_subtle_spell=1
+"colorscheme quantum
+"let g:airline_theme='quantum'
 " Gruvbox
-colorscheme gruvbox
-let g:gruvbox_contrast_dark="medium"
-let g:airline_theme='gruvbox'
+"colorscheme gruvbox
+"let g:gruvbox_contrast_dark="medium"
+"let g:airline_theme='gruvbox'
 
 " Oceanic Next
 "colorscheme OceanicNext
@@ -389,7 +394,12 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ====================== GitGutter Config ==================
+" ====================== Auto-Paris Config ==================
+
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+let g:AutoPairsMapCh = 0
+"====================== GitGutter Config ==================
 
 " Remove gitfutter mappings to free up 'h' key
 let g:gitgutter_map_keys = 0
