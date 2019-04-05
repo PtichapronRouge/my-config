@@ -1,5 +1,3 @@
-export TERM="xterm-256color"
-
 # You may need to manually set your language environment
 #export LANG=fr_FR.UTF-8
 # export LC_ALL=""
@@ -127,7 +125,9 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='236'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='167'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
 
+
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='026'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='026'
 
 #POWERLEVEL9K_ANACONDA_FOREGROUND='teal'
 POWERLEVEL9K_ANACONDA_BACKGROUND='teal'
@@ -167,4 +167,4 @@ bindkey "^N" clear-screen
 ################### FZF #####################################
 #
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-export FZF_DEFAULT_OPTS="--layout=reverse --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500' --bind ctrl-h:preview-up,ctrl-l:preview-down"
+export FZF_DEFAULT_OPTS="--layout=reverse --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500' --bind ctrl-h:preview-up,ctrl-l:preview-down --color fg:252,hl:67,fg+:252,hl+:81"
