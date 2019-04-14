@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+import os
+
+bash_command = "acpi -b | grep Battery"
+bash_command_bis = "acpi -i | grep capacity"
+
+rawOutput = os.popen(bash_command).read().split('\n')
+percent = dict()
+charging = False
+print(rawOutput)
+for line in rawOutput:
+    if line != '':
+        line=line.split(" ")
+        percent[line[1]] = line[-1]
+
+rawOutputCapacity = os.system(bash_command_bis).split('\n')
+capacity = dict()
+
+for line in rawOutputCapacity:
+    line = line.split(" ")
+    capacity[line[1]] = line[4]
+
+truePercentage = 0
+
+for i in range(len(percent)):
+    modifier = capacity[i]/sum(capacity)
+    truePercentage += percent[i]*percent[i]
+
+print(truePercentage)
