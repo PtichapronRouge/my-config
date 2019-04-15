@@ -164,6 +164,7 @@ bindsym $mod+Shift+grave move container to workspace $ws12
 assign [class="Telegram"]   $ws4
 assign [class="Riot"]       $ws4
 assign [class="Thunderbird"] $ws5
+assign [class="^Mailspring"] $ws5
 for_window [class="Spotify"] move to workspace $ws12
 assign [class="^Code$"] $ws1
 assign [class="^Google$"] $ws2

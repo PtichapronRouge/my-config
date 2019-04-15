@@ -1,0 +1,4 @@
+#compdef uvim
+
+compdef uvim=vim
+

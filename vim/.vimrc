@@ -21,6 +21,9 @@ set colorcolumn=80                            " show a column at 80 chars
 set ttimeoutlen=10                            " Fast Esc key
 let mapleader=" "                             " Map leader to space bar
 
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
+
 " This makes vim act like all other editors, buffers can exist in the
 " background without being in a window.
 " http://items.sjbach.com/319/configureing-vim-right
@@ -43,7 +46,6 @@ nnoremap <Leader>Q :qa!<cr>
 
 " jk | Escaping!
 inoremap jk <Esc>
-xnoremap jk <Esc>
 cnoremap jk <C-c>
 
 " Movement in insert mode
@@ -275,6 +277,9 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'konfekt/fastfold'
 Plugin 'jeetsukumaran/vim-buffergator'
 
+" Clean Diff View
+Plugin 'chrisbra/vim-diff-enhanced'
+
 call vundle#end()
 
 
@@ -394,10 +399,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ====================== Auto-Paris Config ==================
+" ====================== Auto-Pairs Config ==================
 
 let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = '<M-b>'
+let g:AutoPairsShortcutBackInsert = '<C-z>'
 let g:AutoPairsMapCh = 0
 "====================== GitGutter Config ==================
 
@@ -541,6 +546,14 @@ nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
 nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
 xnoremap <leader>? "gy:call <SID>goog(@g, 0)<cr>gv
 xnoremap <leader>! "gy:call <SID>goog(@g, 1)<cr>gv
+
+" Using arrow to resize
+if get(g:, 'elite_mode')
+	nnoremap <Up>    :resize +2<CR>
+	nnoremap <Down>  :resize -2<CR>
+	nnoremap <Left>  :vertical resize +2<CR>
+	nnoremap <Right> :vertical resize -2<CR>
+endif
 
 
 " ======================= Debug ====================

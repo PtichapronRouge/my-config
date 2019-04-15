@@ -1,1 +1,1 @@
-gnome-terminal --profile=Vim -t "Vim" -- /bin/zsh -c 'cd ~/CurrentProject/; vim "$@"'
+gnome-terminal --profile=Vim -t "Vim" -- /bin/zsh -c "cd ~/CurrentProject/"$@"; vim"
