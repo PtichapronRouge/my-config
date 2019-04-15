@@ -1,0 +1,56 @@
+#!/usr/bin/python
+
+import os
+
+bash_command = "acpi -b | grep Battery"
+bash_command_bis = "acpi -i | grep capacity"
+def onlyDigit(string) :
+    return ''.join(c for c in string if c.isdigit())
+
+rawOutput = os.popen(bash_command).read().split('\n')
+percent = dict()
+charging = False
+#print(rawOutput)
+for line in rawOutput:
+    if line != '':
+        line=line.split(" ")
+        percent[line[1][0]] = int( onlyDigit( line[3] ))
+        if line[2][:-1] == "Charging":
+            charging = True
+
+rawOutputCapacity = os.popen(bash_command_bis).read().split('\n')
+capacity = dict()
+
+#print(percent)
+for line in rawOutputCapacity:
+    if line != '':
+        line = line.split(" ")
+        capacity[line[1][0]] = int( onlyDigit( line[4] ) )
+
+truePercentage = 0
+#print(capacity)
+
+for i in range(len(percent)):
+    modifier = capacity[str( i )]/sum(capacity.values())
+    truePercentage += percent[str(i)]*modifier
+if charging :
+    status = " CHR"
+else :
+    status = " DIS"
+print(str(int(truePercentage)) + "%" + status)
+print(str(int(truePercentage)) + "%" + status)
+
+if not(charging) :
+    if (int(truePercentage) < 20) :
+        print("#FF0000\n")
+    elif (int(truePercentage) < 40) :
+        print("#FFAE00\n")
+    elif (int(truePercentage) < 60) :
+        print("#FFF600\n")
+    elif (int(truePercentage) < 99) :
+        print("#A8FF00\n")
+
+    if (int(truePercentage) < 5) :
+        exit(33);
+else :
+    print("#8800FF\n")

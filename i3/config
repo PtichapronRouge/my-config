@@ -31,7 +31,7 @@ font pango:Noto Mono for Powerline 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Unbinding Cap Lock and bind it to Esc
 exec setxkbmap -option caps:swapescape
