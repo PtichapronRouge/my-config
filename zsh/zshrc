@@ -136,3 +136,7 @@ bindkey "^N" clear-screen
 #
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--layout=reverse --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500' --bind ctrl-h:preview-up,ctrl-l:preview-down --color fg:252,hl:67,fg+:252,hl+:81"
+
+####################### Custom autocompletion ######################
+
+compctl -/ -W ~/CurrentProject uvim
