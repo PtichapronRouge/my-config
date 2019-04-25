@@ -291,9 +291,18 @@ syntax enable
 "set termguicolors
 "set term=xterm-256color
 set termguicolors
-colorscheme material-monokai
-let g:airline_theme='materialmonokai'
-let g:materialmonokai_subtle_spell=1
+
+"colorscheme onedark
+
+colorscheme special
+let g:airline_theme='onedark'
+
+
+
+"colorscheme material-monokai
+"let g:airline_theme='materialmonokai'
+"let g:materialmonokai_subtle_spell=1
+
 "colorscheme quantum
 "let g:airline_theme='quantum'
 " Gruvbox
@@ -310,6 +319,13 @@ let g:materialmonokai_subtle_spell=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
+
+" set alternate color for modified active/inactive tabs
+"autocmd VimEnter *
+"   \ let g:airline#themes#materialmonokai#palette.tabline = {
+"   \    'airline_tabmod':       ['#f8f8f8','#780000',231,88,''],
+"   \    'airline_tabsel': ['#dddddd','#463030',231,52,''],
+"   \ } | :AirlineRefresh
 
 " Set vertical bar as cursor in insert mode
 if exists('$TMUX')
@@ -556,7 +572,6 @@ if get(g:, 'elite_mode')
 	nnoremap <Left>  :vertical resize +2<CR>
 	nnoremap <Right> :vertical resize -2<CR>
 endif
-
 
 " ======================= Debug ====================
 
