@@ -282,12 +282,15 @@ Plugin 'jeetsukumaran/vim-buffergator'
 " Clean Diff View
 Plugin 'chrisbra/vim-diff-enhanced'
 
+" Relative Line Numbers
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
 call vundle#end()
 
 
 " ====================== Theme Config ==================
 
-syntax enable
+syntax enable on
 "set termguicolors
 "set term=xterm-256color
 set termguicolors
