@@ -116,6 +116,8 @@ bindsym $mod+a focus parent
 
 # screenshot
 bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y_%m_%d_%H_%M_%S.png
+bindsym $sup+Shift+s exec gnome-screenshot -a
+
 
 ##### WORKSPACES ### ##################################################
 
