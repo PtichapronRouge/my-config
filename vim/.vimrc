@@ -285,6 +285,9 @@ Plugin 'chrisbra/vim-diff-enhanced'
 " Relative Line Numbers
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Search Indexer
+Plugin 'google/vim-searchindex'
+
 call vundle#end()
 
 
@@ -577,5 +580,7 @@ if get(g:, 'elite_mode')
 endif
 
 " ======================= Debug ====================
-
+"
+noremap <Leader>y "+y
+noremap <Leader>p "+p
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
