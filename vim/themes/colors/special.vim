@@ -42,7 +42,6 @@ set termguicolors
 " Theme setup {{{
   hi clear
   syntax reset
-  let g:colors_name = "base16-eighties"
 " }}}
 
 " Highlighting function {{{

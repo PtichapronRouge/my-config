@@ -237,8 +237,6 @@ Plugin 'ervandew/supertab'                        " Use Tab for insert completio
 " Themes
 Plugin 'vim-airline/vim-airline'                  " Bottom Airline Bar
 Plugin 'vim-airline/vim-airline-themes'           " Airline themes
-Plugin 'morhetz/gruvbox'                          " Gruvbox Theme
-"Plugin 'mhartington/oceanic-next'                 " Oceanic Next Colour Scheme
 
 " Git
 Plugin 'tpope/vim-fugitive'                       " Git Wrapper
@@ -261,16 +259,11 @@ Plugin 'mxw/vim-jsx'                              " Better JSX syntax
 Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
 Plugin 'jelera/vim-javascript-syntax'
 
-" JSX / React
-Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
-
 " Liniting
 Plugin 'w0rp/ale'                                 " Async Linting tool
 
-" Ruby
+" Closing syntax
 Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to things like loops
-Plugin 'tpope/vim-rails'                            " Better Rails Syntax
-Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
 
 " Very good Smooth-Scrolling
 Plugin 'terryma/vim-smooth-scroll'
@@ -425,8 +418,6 @@ let g:fzf_colors =
 
 " ====================== Auto-Pairs Config ==================
 
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = '<C-z>'
 let g:AutoPairsMapCh = 0
 "====================== GitGutter Config ==================
 
@@ -579,8 +570,18 @@ if get(g:, 'elite_mode')
 	nnoremap <Right> :vertical resize -2<CR>
 endif
 
-" ======================= Debug ====================
-"
+" ======================= Utilities  ====================
+
+" Ctrl-C Clipboard
 noremap <Leader>y "+y
 noremap <Leader>p "+p
+
+" Middle-Click Clipboard
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
+
+" Stay in place when searching a word
+noremap * *<C-O>
+
+" Change Directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
