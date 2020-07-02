@@ -20,11 +20,24 @@ Plugin 'Konfekt/FastFold'
 Plugin 'Yggdroot/indentline'
 Plugin 'tmhedberg/SimpylFold'
 
+" Cpp
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/lh-style'
+Plugin 'LucHermitte/lh-tags'
+Plugin 'LucHermitte/lh-dev'
+Plugin 'LucHermitte/lh-brackets'
+Plugin 'LucHermitte/searchInRuntime'
+Plugin 'LucHermitte/mu-template'
+Plugin 'tomtom/stakeholders_vim'
+Plugin 'LucHermitte/alternate-lite'
+Plugin 'LucHermitte/lh-cpp'
+
 " LaTeX
 Plugin 'lervag/vimtex'
 
-" Mutlilanguage autocompletion
+" Mutlilanguage autocompletion and autoformatting
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'chiel92/vim-autoformat'
 
 " Git
 Plugin 'tpope/vim-fugitive'
@@ -43,12 +56,11 @@ inoremap jk <esc>
 " Tabulation
 set expandtab
 set smarttab
-
 set shiftwidth=4
 set tabstop=4
 
 " Indentation
-set autoindent 
+set autoindent
 set smartindent
 set wrap
 
@@ -57,15 +69,20 @@ syntax on
 set number
 set encoding=utf8
 
+" search
+set ignorecase
+set smartcase
+set nohlsearch
+
 " End-of-line spaces
 hi ExtraWhiteSpace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhiteSpace /\s\%#\@<!$/
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <cr>
+autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
-" Splits moving
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-l> <C-W>l
-map <C-h> <C-W>h
+" Splits
+set splitbelow
+set splitright
 
 " Smart tabs
 map <leader>tn :tabnew<cr>
@@ -78,20 +95,63 @@ nmap <F3> gt
 set undodir=~/.vim/temp_dirs/undodir
 set undofile
 
+" Group swp files and backups into a dir
+set backupdir=~/.vim/temp_dirs/backups
+set directory=~/.vim/temp_dirs/backups
+
 " Status line
 
 set laststatus=2
 set statusline=\ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
+" Quick save / quit
+nmap <leader>w :w<cr>
+nmap <leader>wa :wall<cr>
+nmap <leader>wq :wq<cr>
+nmap <leader>q :q<cr>
+nmap <leader>qa :qall<cr>
+
+" edit config file
+nmap <leader>vr :edit ~/.vimrc<cr>
+nmap <leader>zr :edit ~/.zshrc<cr>
+nmap <leader>i3 :edit ~/.config/i3/config<cr>
+
+" path manipulation
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>pd :pwd<cr>
+
+" misc helpers
+nmap ;; A;<esc>
+nmap <leader><space> i<space><esc>
+nnoremap <leader>o o<esc>
+
+" remove annoying bindings
+nmap Q <nop>
+
 " Nerdtree
 map <leader>nn :NERDTreeToggle<cr>
-map <F1> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.o$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Yankring 
+" Yankring
 let g:yankring_history_dir = expand('$HOME/.vim/buffers')
+nnoremap <silent> <F1> :YRShow <CR>
+
+" CtrlP
+nmap <leader>p :CtrlPMRU <cr>
+let g:ctrlp_user_command = 'ag %s -l -U --hidden --nocolor -g""'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_map = '<leader><C-p>'
+let g:ctrlp_cmp = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom, order:btt,min:1,max:10,results:20'
 
 " YouCompleteMe
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_server_python_interpreter='/usr/bin/python2'
 let g:ycm_global_ycm_extra_conf='~/.vim/config/ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['~/.vim/config/ycm_global_ycm_extra_conf.py']
+
+" vim-autoformat
+noremap <F4> :Autoformat<CR>
+"autocmd FileType c,cpp,python autocmd BufWritePre <buffer> :Autoformat
+let g:formatter_yapf_style='pep8'

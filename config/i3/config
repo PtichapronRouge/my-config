@@ -10,11 +10,14 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
-set $sup Mod4
+set $ms Mod4
+
+exec setxkbmap fr
+exec_always --no-startup-id feh --randomize --bg-scale ~/.wallpapers/*
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 12
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,7 +34,7 @@ font pango:monospace 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,10 +43,10 @@ bindsym $mod+Shift+p exec shutdown now
 exec xautolock -notify -time 15 -locker 'i3lock -feb -c 444444' &
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -52,10 +55,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -70,10 +73,10 @@ bindsym $mod+Control+Up move workspace to output up
 bindsym $mod+Control+Down move workspace to output down
 
 # move focused workspace between monitors
-bindsym $mod+Control+m move workspace to output right
-bindsym $mod+Control+j move workspace to output left
-bindsym $mod+Control+l move workspace to output up
-bindsym $mod+Control+k move workspace to output down
+bindsym $mod+Control+l move workspace to output right
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+j move workspace to output down
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -99,10 +102,54 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 
-##### WORKSPACES ### ##################################################
+##### gaps ######################################################
+
+for_window [class="^.*"] border pixel 2
+gaps inner 5
+gaps outer 5
+smart_borders on
+smart_gaps on
+
+set $mode_gaps Gaps: [o]uter, [i]nner
+set $mode_gaps_outer Outer Gaps: [ +|-|0 ] (local), Shift + [ +|-|0 ](global)
+set $mode_gaps_inner Inner Gaps: [ +|-|0 ] (local), Shift + [ +|-|0 ] (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+##### WORKSPACES ######################################################
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -123,11 +170,11 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $sup+1 workspace $ws6
-bindsym $sup+2 workspace $ws7
-bindsym $sup+3 workspace $ws8
-bindsym $sup+4 workspace $ws9
-bindsym $sup+5 workspace $ws10
+bindsym $ms+1 workspace $ws6
+bindsym $ms+2 workspace $ws7
+bindsym $ms+3 workspace $ws8
+bindsym $ms+4 workspace $ws9
+bindsym $ms+5 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -135,11 +182,11 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $sup+Shift+1 move container to workspace $ws6
-bindsym $sup+Shift+2 move container to workspace $ws7
-bindsym $sup+Shift+3 move container to workspace $ws8
-bindsym $sup+Shift+4 move container to workspace $ws9
-bindsym $sup+Shift+5 move container to workspace $ws10
+bindsym $ms+Shift+1 move container to workspace $ws6
+bindsym $ms+Shift+2 move container to workspace $ws7
+bindsym $ms+Shift+3 move container to workspace $ws8
+bindsym $ms+Shift+4 move container to workspace $ws9
+bindsym $ms+Shift+5 move container to workspace $ws10
 
 assign [class="Telegram"]   "4: Chat"
 assign [class="Riot"]       "4: Chat"
@@ -159,24 +206,24 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym m resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+# same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+# back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -184,74 +231,69 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
 
-###### EXEC ON STARTUP ###################################################
-
-
-exec --no-startup-id clipit
-exec --no-startup-id nm-applet
 
 ##### AUDIO CONTROL ######################################################
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec amixer set Master toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
+#bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
+#bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
 # For keyboards without Audio keys
 # Press $mod+Shift+a to enter alsamixer mode
-mode "$mode_alsa" {
-    bindsym m exec "amixer sset Master mute"
-    bindsym u exec "amixer sset Master unmute"
-    bindsym Up exec "amixer sset Master 5%+"
-    bindsym Down exec "amixer sset Master 5%-"
+#mode "$mode_alsa" {
+#    bindsym m exec "amixer sset Master mute"
+#        bindsym u exec "amixer sset Master unmute"
+#        bindsym Up exec "amixer sset Master 5%+"
+#        bindsym Down exec "amixer sset Master 5%-"
 
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+#       bindsym Escape mode "default"
+#        bindsym Return mode "default"
+#}
 
-set $mode_alsa Alsamixer Mode: [m]ute [u]nmute [Up] [Down]
-bindsym $mod+Shift+a mode "$mode_alsa"
+#set $mode_alsa Alsamixer Mode: [m]ute [u]nmute [Up] [Down]
+#bindsym $mod+Shift+a mode "$mode_alsa"
 
 
 ##### SCREEN CONTROL ######################################################
 
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 
 ##### PROGRAMS LAUNCHERS ##################################################
-
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 
 # Press $mod+o to enter launch mode
 mode "$mode_launcher" {
 
     bindsym f exec "firefox"
-    bindsym t exec "thunderbird"
-    bindsym e exec "telegram-desktop"
-    bindsym r exec "riot-desktop"
-    bindsym s exec "slack"
+        bindsym t exec "thunderbird"
+        bindsym e exec "telegram-desktop"
+        bindsym r exec "riot-desktop"
+        bindsym s exec "slack"
+        bindsym k exec "keepassxc"
 
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Return mode "default"
 }
 
-set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram [s]lack
+set $mode_launcher Launch: [f]irefox [t]hunderbird [r]iot t[e]legram [s]lack [k]eepassxc
 bindsym $mod+o mode "$mode_launcher"
 
+##### i3 bar ##################################################
+
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf 2> ~/.config/i3/i3blocks.err
+        strip_workspace_numbers no
+        output primary
+        tray_output primary
+        mode dock
+        position bottom
+        font pango: monospace 8
+}
+
+# vim:filetype=i3

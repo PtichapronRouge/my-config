@@ -1,0 +1,17 @@
+#!/bin/bash
+
+STATUS=$(pulseaudio-ctl full-status)
+MUTED=$(echo $STATUS | awk '{print $2}' | grep yes)
+if [ $MUTED ]
+    then echo "MUTE"
+else
+    LEVEL=$(echo $STATUS | awk '{print $1}')
+    echo "M $LEVEL%"
+fi
+
+case $BLOCK_BUTTON in
+	1) ( pavucontrol & ) && disown;;
+	3) pulseaudio-ctl mute ;;  # right click, mute/unmute
+	4) pulseaudio-ctl up ;; # scroll up, increase
+	5) pulseaudio-ctl down ;; # scroll down, decrease
+esac
